@@ -13,10 +13,9 @@
 public class Solution {
     /**
      * @param root: A Tree
-     * @return: Inorder in ArrayList which contains node values.
+     * @return: Postorder in ArrayList which contains node values.
      */
-    List<Integer> res = new ArrayList<>();
-    public List<Integer> inorderTraversal(TreeNode root) {
+    public List<Integer> postorderTraversal(TreeNode root) {
         // write your code here
         List<Integer> res = new ArrayList<>();
         transverse(root, res);
@@ -26,8 +25,8 @@ public class Solution {
     private void transverse(TreeNode root, List<Integer> res) {
         if (root != null) {
             transverse(root.left, res);
+            transverse(root.right, res);
             res.add(root.val);
-            transverse(root.right,res);
         }
     }
-} 
+}

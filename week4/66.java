@@ -30,3 +30,32 @@ public class Solution {
         }
     }
 }
+
+## no recursion: 
+
+public class Solution {
+    /**
+     * @param root: A Tree
+     * @return: Preorder in ArrayList which contains node values.
+     */
+    public List<Integer> preorderTraversal(TreeNode root) {
+        // write your code here
+        List<Integer> res = new ArrayList<>();
+        Stack<TreeNode> treeStack =  new Stack<>();
+        if (root == null) {
+            return res;
+        }
+        treeStack.push(root);
+        while (!treeStack.isEmpty()) {
+            TreeNode temp = treeStack.pop();
+            res.add(temp.val);
+            if (temp.right != null) {
+                treeStack.push(temp.right);
+            }
+            if (temp.left != null) {
+                treeStack.push(temp.left);
+            }
+        }
+        return res;
+    }
+}
