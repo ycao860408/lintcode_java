@@ -60,3 +60,85 @@ public class Solution {
         }
     }
 }
+
+// quick sort 
+
+public class Solution {
+    /**
+     * @param A: an integer array
+     * @return: nothing
+     */
+    public void sortIntegers2(int[] A) {
+        // write your code here
+        if (A == null) {
+            return;
+        }
+        helper(A, 0, A.length - 1);
+    }
+    
+    private void helper(int[] A, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        
+        int pivot = A[left + (right - left) / 2];
+        int i = left, j = right;
+        while (i <= j) {
+            while (i <= j && A[i] < pivot) {
+                i++;
+            }
+            
+            while (i <= j && A[j] > pivot) {
+                j--;
+            }
+            if (i <= j) {
+                int temp = A[i];
+                A[i++] = A[j];
+                A[j--] = temp;
+            }
+        }
+        helper(A, left, j);
+        helper(A, i, right);
+    }
+}
+
+// randomly select the pivot
+
+public class Solution {
+    /**
+     * @param A: an integer array
+     * @return: nothing
+     */
+    public void sortIntegers2(int[] A) {
+        // write your code here
+        if (A == null) {
+            return;
+        }
+        helper(A, 0, A.length - 1);
+    }
+    
+    private void helper(int[] A, int left, int right) {
+        if (left >= right) {
+            return;
+        }
+        
+        int pivot = A[left + (int) (Math.random()*(right - left))];
+        int i = left, j = right;
+        while (i <= j) {
+            while (i <= j && A[i] < pivot) {
+                i++;
+            }
+            
+            while (i <= j && A[j] > pivot) {
+                j--;
+            }
+            if (i <= j) {
+                int temp = A[i];
+                A[i++] = A[j];
+                A[j--] = temp;
+            }
+        }
+        helper(A, left, j);
+        helper(A, i, right);
+    }
+}
